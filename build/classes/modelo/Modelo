@@ -1,0 +1,80 @@
+@startuml
+Class Sucursal{
+  -String CodigoSucursal;
+  -String Direccion;
+  -String NumeroTelefonico;
+  -List <Cliente> listaDeClientes;
+  -List<Hotel>listaDeHotel;
+  -List<Vuelo>listaDeVuelos;
+}
+Class ServicioVEnta{
+  -String HoraDeVenta;
+  -String IdVendedor;
+  
+} 
+Class Hotel{
+   -String CodigoHotel;
+  -String Nombre;
+  -String Direccion;
+  -String Ciudad;
+  -String NumeroTelefonico;
+  -List <Cliente> listaDeClientes;
+  -String Sucursal sucursal;
+}
+
+Class RegimenHospedaje{
+  -String TipoDePension;
+  -String CodigoHotel;
+  -String CodigoCliente;
+}
+Class PlazaDisponible{
+  -String CodigoHotel;
+  -Int PlazaTotalDisponible;
+  -Int PlazaIndividualDisponible;
+  -Int PlazaMatrimonialDisponible;  
+  -Int PlazaCuadrupleDisponible;
+}
+Class Vuelo{
+  -String NumeroDeVuelo;
+  -String Fecha;
+  -String Hora;
+  -String Origen;
+  -String Destino;
+  -String PlazasTotalDisponible;
+  -String PlazaTuristaDisponible;
+  -String Sucursal sucursal;
+}
+Class PrecioViaje{
+  -String CodigoCliente;
+  -String NumeroVuelo;
+  -Float PrecioTotal;
+  -Float Impuesto;
+  -Float PrecioBruto;
+  -Float Descuento;
+  -Float CostoHospedaje;
+  -Float CostoPension;
+  
+}
+Class Cliente{
+  -String Codigo;
+  -String Nombre;
+  -String Apellido;
+  -String Direccion;
+  -String NumeroDeTelefono;
+  -String FechaDellegada;
+  -String FechaDePartida;
+  -String Hotel hotel;
+  -String Sucursal sucursal;
+}
+title Empty Diagram
+ Cliente "0..*" -- "1" Hotel : Se hospeda
+ Cliente "0..*" -- "*" Sucursal : Contrata
+ (Cliente , Hotel) .. RegimenHospedaje
+ (Hotel , Vuelo) .. PrecioViaje
+  Sucursal  *- ServicioVEnta : Ofrece
+  Sucursal "1" --> "*" Vuelo : ofrece
+  Cliente "1" --> "1"PrecioViaje: Cancela
+  Hotel *-- PlazaDisponible : tiene
+  
+@enduml
+
