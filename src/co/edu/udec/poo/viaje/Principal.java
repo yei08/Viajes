@@ -46,7 +46,8 @@ public class Principal {
 
         //Llamando al constructor de la clase Vuelo
         Vuelo vuelo1 = new Vuelo("0033", "Medellin-Colombia", "carolina sur-E.E.U.U");
-            vuelo1.
+            
 
     }
 }
+
