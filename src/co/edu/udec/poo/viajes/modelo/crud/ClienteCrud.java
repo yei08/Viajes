@@ -10,4 +10,7 @@ package co.edu.udec.poo.viajes.modelo.crud;
  */
 public class ClienteCrud {
     
+ClienteCrud(){
+    System.out.println("prueba de paquete");
+}
 }
